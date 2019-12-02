@@ -1,22 +1,23 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
+.container {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.login-advertisement img {
+  width: 70%;
+  text-align: center;
+  position: relative;
+  top: 20vh;
 }
 
-.App-link {
-  color: #09d3ac;
+.login-block {
+  background-color: #f1f1f1;
+  padding: 10px 10px;
+  position: relative;
+  top: 10vh;
+}
+
+.login-block form {
+  padding: 50px;
+}
+.searchinput {
+  width: 100%;
 }
