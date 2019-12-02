@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import star_wars_logo from '../Assets/star_wars_logo.svg';
-import { Container, Row, Col, Button} from 'react-bootstrap';
+import { Container, Row, Col, Button, Alert} from 'react-bootstrap';
 
 class Login extends Component {
     constructor() {
@@ -8,7 +8,9 @@ class Login extends Component {
         this.state = {
             username : "",
             password: "",
-            user: {}
+            user: {},
+            error : {},
+            wrongCredentialsWarning : false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +18,8 @@ class Login extends Component {
     }
     handleChange(e){
         this.setState({
-            [e.target.id] : e.target.value
+            [e.target.id] : e.target.value,
+             wrongCredentialsWarning : false
         });
     }
     handleSubmit(e){
@@ -26,15 +29,19 @@ class Login extends Component {
             .then(response => response.json())
             .then( data => {    
                     console.log(data);
-                    if(data.count >= 1) {
+                    if(data.count >= 1 && 
+                        data.results[0].name === this.state.username && 
+                        data.results[0].birth_year === this.state.password ) {
                         this.setState({
                             user: data.results[0]
                         })
+                    localStorage.setItem("authenticatedUser",data.results[0].name);
+                    this.props.history.push("/search");
+                    } else {
+                        this.setState({wrongCredentialsWarning : true});
                     }
-                localStorage.setItem("authenticatedUser",data.results[0].name);
-                this.props.history.push("/search");
                 }
-            ).catch(error => this.setState({ error, isLoading: false }));
+            ).catch(error => this.setState({ error}));
         }
     }
     render() {
@@ -65,6 +72,10 @@ class Login extends Component {
                                  
                                 <Button type="submit">Login</Button>
                             </form>
+                              {   this.state.wrongCredentialsWarning && <Alert variant="danger">
+                                    Wrong credentials, Please enter correct username and password to login
+                                </Alert>
+                                }
                         </Col>
                         
                     </Row>
