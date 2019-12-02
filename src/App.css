@@ -21,3 +21,9 @@
 .searchinput {
   width: 100%;
 }
+.card {
+  width: 20rem;
+  float: left;
+  padding: 10px;
+  height: 20rem;
+}

@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+This is a Star Wars API demo Two screen Sample project
+API : https://swapi.co/documentation
+to demonstrate login screen and search screen in React using react router etc.
+for login use Star wars user name and birth_year
+example : 
+username: R2-D2
+password: 33BBY
 ## Available Scripts
 
 In the project directory, you can run:
