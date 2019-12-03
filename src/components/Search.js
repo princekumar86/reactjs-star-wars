@@ -28,7 +28,7 @@ class Search extends Component {
                 apiFetchRequestCounter: 0
             });
             console.log(`timer reset done after 1 minute, ${this.state.apiFetchRequestCounter}`);
-        }, this.timermilliseconds);
+        }, this.state.timermilliseconds);
 
     }
     componentDidMount() {
