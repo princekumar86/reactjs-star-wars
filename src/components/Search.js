@@ -12,18 +12,23 @@ class Search extends Component {
             planetDetail: {},
             apiFetchRequestCounter: 0,
             maxRequestPerUser: 15,
-            timer: ""
+            timer: "",
+            timermilliseconds: 60000, // 60 seconds
         }
         this.handleLogout = this.handleLogout.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.handleMoreInfo = this.handleMoreInfo.bind(this);
         this.handleClose = this.handleClose.bind(this);
+
+        if (localStorage.getItem("authenticatedUser") === "Luke Skywalker") {
+            this.state.timermilliseconds = 100*60000; // this super user can make 100 time more api calls compared to normal user
+        }
         this.timer = setInterval(() => {
             this.setState({
                 apiFetchRequestCounter: 0
             });
             console.log(`timer reset done after 1 minute, ${this.state.apiFetchRequestCounter}`);
-        }, 60000);
+        }, this.timermilliseconds);
 
     }
     componentDidMount() {
