@@ -23,7 +23,20 @@
 }
 .card {
   width: 20rem;
+  height: 20rem;
   float: left;
   padding: 10px;
-  height: 20rem;
+  overflow: hidden;
+}
+.symboliccircle {
+  /*height: 25px;
+  width: 25px;*/
+  background-color: #ffe9e9;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+}
+.card-content {
+  z-index: 3;
 }
